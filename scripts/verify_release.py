@@ -7,7 +7,6 @@ import csv
 import hashlib
 import json
 import math
-import re
 from pathlib import Path
 
 
@@ -23,9 +22,14 @@ EXPECTED_PRIMARY = {
     "ma_dr_bc": 7.66,
     "c_tmle": 4.98,
 }
-FORBIDDEN = re.compile(
-    r"manifold://|/data/users/|/Users/|/home/atavory|USHMOO_|fbsource|overleaf",
-    re.IGNORECASE,
+FORBIDDEN_MARKERS = (
+    "manifold" + "://",
+    "/data/" + "users/",
+    "/" + "Users/",
+    "/home/" + "atavory",
+    "USH" + "MOO_",
+    "fb" + "source",
+    "over" + "leaf",
 )
 
 
@@ -103,9 +107,10 @@ def verify_no_internal_identifiers() -> None:
             continue
         if path.suffix.lower() not in {".json", ".md", ".py", ".txt", ".tex", ".csv"}:
             continue
-        match = FORBIDDEN.search(path.read_text(errors="replace"))
-        if match:
-            raise SystemExit(f"internal identifier {match.group(0)!r} in {path}")
+        text = path.read_text(errors="replace").lower()
+        for marker in FORBIDDEN_MARKERS:
+            if marker.lower() in text:
+                raise SystemExit(f"internal identifier {marker!r} in {path}")
 
 
 def main() -> None:
