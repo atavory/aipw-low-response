@@ -1,0 +1,26 @@
+{
+  "aug14_run_dir": "archived candidate-path bundle; not distributed here",
+  "base_rho_script": "archived diagnostic script; not distributed here",
+  "base_rho_script_sha256": "df8cdc89871b197feae67a3655dab5e4bbdce885964d0164041a698f54699484",
+  "breadth_script": "archived experiment runner; not distributed here",
+  "breadth_script_sha256": "7319ddedd9618a83f17dc3f9cce7a2fd0048227750376ed88ff7903ada647e74",
+  "endpoint": "weighted-residual selected candidate",
+  "methods": [
+    "aipw",
+    "ma_dr_bc",
+    "cui_selective_ml",
+    "ctmle"
+  ],
+  "response_bin_rows": 36864,
+  "response_bin_settings": 384,
+  "response_bins": "within-sample quartiles of true_pi; bin 1 is lowest response",
+  "rho_formula": "mean((1 - true_pi / selected_p)^2 * true_pi / (1 - true_pi))",
+  "rows": 9216,
+  "sample_groups": 2304,
+  "selection_overlay": "artifacts/dml_weighted_residual_gamma_selection_ablation_20260903/weighted_residual_gamma_replication_rows.csv",
+  "selection_overlay_sha256": "97c357334cf6e159bed8615ea0d50c1c452aaddea6ddfc672d5a66b1083de674",
+  "settings": 96,
+  "source_script": "archived experiment source; not distributed here",
+  "source_script_sha256": "98987b31cf7c883d4776996ae7b28f7f1b9fe134d6da323e95250f00232842ce",
+  "support_data": "raw semi-synthetic covariates; not distributed here"
+}

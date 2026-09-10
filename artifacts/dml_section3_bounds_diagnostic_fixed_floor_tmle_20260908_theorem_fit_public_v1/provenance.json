@@ -1,0 +1,21 @@
+{
+  "aug14_run_dir": "archived candidate-path bundle; not distributed here",
+  "breadth_script": "archived experiment runner; not distributed here",
+  "breadth_script_sha256": "7319ddedd9618a83f17dc3f9cce7a2fd0048227750376ed88ff7903ada647e74",
+  "diagnostic": "Section 3.2 average-variance and Section 3.3 squared-bias bound replay",
+  "gate_script": "archived selection script; not distributed here",
+  "gate_script_sha256": "f07098e0b5df5e7e04bbd393ec19f24abb53dae68dddbe7ca7f82c8778c97970",
+  "methods": [
+    "tmle"
+  ],
+  "retrospective_truth": "uses true pi and mu from simulation designs",
+  "reuse_replication_rows": null,
+  "rho_script": "archived diagnostic script; not distributed here",
+  "rho_script_sha256": "75c687b96723a4a605f508c7df3c6813b399af0e95957057b90e3c1bdd0a2293",
+  "rows": 2304,
+  "sample_groups": 2304,
+  "sigma2": 1.0,
+  "source_script": "archived experiment source; not distributed here",
+  "source_script_sha256": "3ab6bc1d0077316fe397d6cc97304b6e62d76eca969d9cf7a67a5a835b38db7e",
+  "support_data": "raw semi-synthetic covariates; not distributed here"
+}

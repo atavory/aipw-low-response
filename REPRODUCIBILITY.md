@@ -1,0 +1,61 @@
+# Reproducibility scope
+
+This repository supports independent verification of the numerical results
+reported in the paper from compact paired replication rows. It does not bundle
+the original raw IHDP, ACIC, or Twins covariate files or the distributed-job
+archives used to fit every nuisance model from scratch.
+
+## Included evidence
+
+The `artifacts/` directory contains six paper-facing bundles:
+
+1. primary 24-setting results for AIPW, selective ML, Ma DR-BC, and C-TMLE;
+2. response-probability-quartile diagnostics;
+3. squared-bias and average-variance diagnostics for the primary estimators;
+4. the corresponding fixed-floor TMLE diagnostic;
+5. the equal-setting same-sample versus fixed-candidate comparison;
+6. nuisance-error sensitivity summaries.
+
+Every setting contains 96 paired replications. The primary table contains 24
+settings for each of four estimator families. The fixed-floor TMLE result is an
+appendix sensitivity analysis, not a primary comparator.
+
+## Aggregation
+
+For each setting and estimator, the paper computes
+
+```text
+100 * (mean(reference squared error) - mean(repaired squared error))
+    / mean(reference squared error)
+```
+
+and then averages those setting-level percentages with equal weight. The
+same-sample audit applies the same rule to the fixed-candidate risk
+decomposition. Pooled ratios of means are retained only as labeled sensitivity
+calculations.
+
+## Recreate the same-sample audit
+
+From the repository root:
+
+```bash
+python3 scripts/dml_summarize_section4_same_sample_penalty.py \
+  --primary-rows artifacts/dml_section3_bounds_diagnostic_20260908_theorem_fit_public_v1/section3_bounds_replication_rows.csv \
+  --tmle-rows artifacts/dml_section3_bounds_diagnostic_fixed_floor_tmle_20260908_theorem_fit_public_v1/section3_bounds_replication_rows.csv \
+  --out-dir /tmp/aipw-same-sample-audit
+```
+
+The expected equal-setting results are:
+
+- primary estimators: 6.693% actual same-sample gain, 4.899% fixed-candidate
+  gain, and a 1.794 percentage-point gap;
+- fixed-floor TMLE: -7.670% actual same-sample gain, 3.741% fixed-candidate
+  gain, and a -11.411 percentage-point gap.
+
+## Full refitting
+
+The included code records the repair and aggregation logic, while the compact
+rows permit complete recalculation of the submitted tables and diagnostics.
+Recreating all upstream nuisance fits additionally requires obtaining the
+source benchmark covariates under their respective distribution terms.
+
