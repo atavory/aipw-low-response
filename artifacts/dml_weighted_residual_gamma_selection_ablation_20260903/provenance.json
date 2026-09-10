@@ -36,5 +36,5 @@
   "source_script_sha256": "98987b31cf7c883d4776996ae7b28f7f1b9fe134d6da323e95250f00232842ce",
   "support_data": "raw semi-synthetic covariates; not distributed here",
   "table_renderer": "scripts/dml_render_weighted_residual_gamma_tables.py",
-  "table_renderer_sha256": "84d52ced4e22737e33524a0ce68eb55a5275f3aabf27c19d12de60e078760928"
+  "table_renderer_sha256": "98dd6df773045cb111dcf63a6437539530cb0d242b3036cc0663ce22f448523b"
 }
